@@ -1,24 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/firestore';
+import 'firebase/compat/auth';
+import { useAuthState } from 'react-firebase-hooks/auth';
+
+import ChatRoom from './ChatRoom';
+import SignIn from './SignIn';
+
+import AppContainer from './styled/AppContainer';
+
+const firebaseApi = firebase.initializeApp({
+  apiKey: 'AIzaSyDk4KcDeZz7gFUXZt0siqenazS9WHImnw4',
+  authDomain: 'chat-app-20abd.firebaseapp.com',
+  projectId: 'chat-app-20abd',
+  storageBucket: 'chat-app-20abd.appspot.com',
+  messagingSenderId: '885779956610',
+  appId: '1:885779956610:web:316a5015746d2a53d6059b',
+  measurementId: 'G-L64G6EE5KY'
+});
+
+const auth = firebaseApi.auth();
+const firestore = firebaseApi.firestore();
 
 function App() {
+  const [user] = useAuthState(auth);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppContainer>
+      {user ? <ChatRoom firestore={firestore} /> : <SignIn auth={auth} />}
+    </AppContainer>
   );
 }
 
