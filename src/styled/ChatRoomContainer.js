@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const ChatRoomContainer = styled.div`
   height: 100%;
   width: 100%;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
   margin-top: 50px;
 `;
 

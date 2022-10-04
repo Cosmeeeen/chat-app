@@ -8,6 +8,7 @@ import ChatMessage from './ChatMessage';
 import LogOutButton from './LogOutButton';
 
 import ChatRoomContainer, { TypingZoneContainer, ChatRoomHeader } from './styled/ChatRoomContainer';
+import LoadingSpinner from './LoadingSpinner';
 
 const ChatRoom = ({ firestore }) => {
   const messagesRef = firestore.collection('messages');
@@ -56,7 +57,7 @@ const ChatRoom = ({ firestore }) => {
           return <ChatMessage key={msg.key} message={msg} auth={auth} />;
         })
       ) : (
-        <h1>Loading...</h1>
+        <LoadingSpinner />
       )}
       <div ref={bottomRef} />
       <TypingZoneContainer onSubmit={sendMessage}>
