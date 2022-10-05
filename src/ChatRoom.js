@@ -52,10 +52,7 @@ const ChatRoom = ({ firestore }) => {
         <LogOutButton />
       </ChatRoomHeader>
       {messages ? (
-        messages.map((msg) => {
-          console.log(msg);
-          return <ChatMessage key={msg.key} message={msg} auth={auth} />;
-        })
+        messages.map((msg) => <ChatMessage key={msg.key} message={msg} auth={auth} />)
       ) : (
         <LoadingSpinner />
       )}
