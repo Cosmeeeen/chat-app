@@ -61,11 +61,6 @@ export const ChatRoomHeader = styled.div`
     width: 100%;
     height: 10px;
   }
-
-  a {
-    position: absolute;
-    left: 15px;
-  }
 `;
 
 export default ChatRoomContainer;
